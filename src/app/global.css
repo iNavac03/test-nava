@@ -1,0 +1,47 @@
+/**
+*
+* Import all @UiReact dependency styles down here:
+*
+*/
+
+/* DELETE THIS IMPORT IF YOU WILL PROVIDE YOUR OWN THEME VARIABLES */
+@import url(../../node_modules/@uireact/foundation/dist/index.css);
+
+/* @UiReact DEPENDENCIES */
+
+@import url(../../node_modules/@uireact/view/dist/index.css);
+@import url(../../node_modules/@uireact/card/dist/index.css);
+@import url(../../node_modules/@uireact/dialog/dist/index.css);
+@import url(../../node_modules/@uireact/flex/dist/index.css);
+@import url(../../node_modules/@uireact/foundation/dist/index.css);
+@import url(../../node_modules/@uireact/icons/dist/index.css);
+@import url(../../node_modules/@uireact/text/dist/index.css);
+
+:root {
+    /* colors */
+    --bg-color: #16423C;
+    --secondary-color: #6A9C89;
+    --third-color: #C4DAD2;
+    --fourth-color: #E9EFEC;
+
+    /* font sizes */
+    --text-xss: 0.5rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
+    --text-7xl: 4.5rem;
+    --text-8xl: 6rem;
+    --text-9xl: 8rem;
+    --text-10xl: 10rem;
+  
+    /* font sizes */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

@@ -1,0 +1,12 @@
+/* photocard.module.css */
+
+.image {
+    height: 200px;
+    width: auto;
+  }
+  
+  .container {
+    width: 300px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,30 @@
+
+.container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+  }
+  
+  .heading {
+    margin: 10px 0;
+    font-size: 1.5rem;
+  }
+  
+  .link {
+    text-decoration: none;
+    display: block;
+    padding: 2px;
+    margin: 10px;
+    color: var(--third-color);
+    border-radius: 5px;
+  }
+
+  .link:hover{
+    color: var(--bg-color);
+    background-color: var(--third-color);
+  }
+  
