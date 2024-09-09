@@ -10,7 +10,8 @@ import pic3 from "@/../public/images/pic3.jpeg";
 export default function AboutPage() {
   return (
     <>
-      <Header text="Luis Eduardo Nava Covarrubias" showButton={true}/>
+      <Header text="Luis Eduardo Nava Covarrubias" showButton btnText="Go back home"
+      />
       <div className={styles.container}>
         <Card
           src={pic1}

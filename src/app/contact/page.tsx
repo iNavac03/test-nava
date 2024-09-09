@@ -1,8 +1,13 @@
+import { Header } from "../sections";
 
 export default function ContactPage() {
     return (
       <main>
-          <p>Contact page</p>
+          <Header
+          text='CONTACT PAGE'
+          showButton
+          btnText="Go back home"
+          />
       </main>
     );
   }

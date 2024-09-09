@@ -3,17 +3,18 @@ import styles from './header.module.css'
 import {Button} from '@/app/sections/'
 
 type HeaderProps = {
-  text: string;
+  text: string 
   showButton?: boolean;
+  btnText?:string
 }
 
-export const Header = ({text, showButton} : HeaderProps) => {
+export const Header = ({text, showButton, btnText} : HeaderProps) => {
   return (
     <div className={styles.container}>
         <h1>{text}</h1>
         {showButton && (
         <Button
-        text='Go back home'
+        text={btnText}
         href='/'
         icon='AngleSmallLeft'
         />

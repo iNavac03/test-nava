@@ -4,13 +4,12 @@ import Link from "next/link";
 import { UiIcon } from "@uireact/icons";
 
 type ButtonProps = {
-  text: string;
+  text: string | undefined
   href: string;
-  icon?: string;
+  icon: string
 };
 
 export const Button = ({ text, href, icon }: ButtonProps) => {
-  const iconText = {icon}
   return (
     <>
       <Link className={styles.button} href={href}>
