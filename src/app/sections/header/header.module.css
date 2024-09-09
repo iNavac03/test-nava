@@ -1,7 +1,6 @@
 .container{
     width: 100%;
     height: auto;
-    position: absolute;
     background-color: var(--bg-color);
     text-align: center;
     padding: 20px 0 20px 0;

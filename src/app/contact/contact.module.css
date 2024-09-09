@@ -1,9 +1,12 @@
-/* about.module.css */
-
 .container {
     display: flex;
     justify-content: center; 
-    height: 100vh;
+    height: 100%;
     background-color: var(--fourth-color);
     gap: 20px;
+    
+  }
+
+  .body{
+    height: 100vh;
   }

@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center; 
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: var(--fourth-color);
   gap: 20px;
 }
@@ -12,4 +12,9 @@
 .image {
   height: 200px;
   width: auto;
+}
+
+
+.body{
+  height: 100vh;
 }

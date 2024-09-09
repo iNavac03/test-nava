@@ -9,7 +9,7 @@ import pic3 from "@/../public/images/pic3.jpeg";
 
 export default function AboutPage() {
   return (
-    <>
+    <div className={styles.body}>
       <Header text="Luis Eduardo Nava Covarrubias" showButton btnText="Go back home"
       />
       <div className={styles.container}>
@@ -32,6 +32,6 @@ export default function AboutPage() {
           content="Picture of me with Alexis Vega"
         />
       </div>
-    </>
+    </div>
   );
 }

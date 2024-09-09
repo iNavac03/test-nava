@@ -3,9 +3,11 @@ import { Menu, Header } from "./sections";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <div className={styles.body}>
       <Header text="HOME PAGE" />
-      <Menu />
-    </main>
+      <div className={styles.main}>
+        <Menu />
+      </div>
+    </div>
   );
 }
