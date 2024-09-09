@@ -7,19 +7,3 @@
     padding: 20px 0 20px 0;
     color: var(--third-color);
 }
-
-.button {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    background-color: var(--third-color);
-    color: var(--bg-color);
-    padding: 10px 20px;
-    border-radius: 10px; 
-}
-
-.button:hover {
-
-    background-color: var(--secondary-color);
-    color: var(--fourth-color); 
-}

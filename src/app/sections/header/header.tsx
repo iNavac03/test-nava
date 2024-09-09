@@ -1,6 +1,6 @@
 "use client";
 import styles from './header.module.css'
-import Link from "next/link";
+import {Button} from '@/app/sections/'
 
 type HeaderProps = {
   text: string;
@@ -12,9 +12,11 @@ export const Header = ({text, showButton} : HeaderProps) => {
     <div className={styles.container}>
         <h1>{text}</h1>
         {showButton && (
-        <Link className={styles.button} href='/'>
-          Go back
-        </Link>
+        <Button
+        text='Go back home'
+        href='/'
+        icon='AngleSmallLeft'
+        />
       )}
     </div>
   );

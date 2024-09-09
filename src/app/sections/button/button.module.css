@@ -1,0 +1,16 @@
+.button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    border-radius: 10px; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button:hover {
+    background-color: var(--third-color);
+}

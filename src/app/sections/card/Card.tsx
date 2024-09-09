@@ -17,7 +17,7 @@ export const Card = ({ src, alt, heading, content }: PhotoCardProps) => {
   return (
     <div className={styles.container}>
       <UiCard>
-        <Image className={styles.image} src={src} alt={alt} />
+        <Image className={styles.image} src={src} alt={alt} priority/>
         <UiSpacing padding={{ all: "five" }}>
           <UiHeading>{heading}</UiHeading>
           <UiText margin={{ top : 'four' }}>{content}</UiText>
