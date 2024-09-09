@@ -1,0 +1,9 @@
+/* about.module.css */
+
+.container {
+    display: flex;
+    justify-content: center; 
+    height: 100vh;
+    background-color: var(--fourth-color);
+    gap: 20px;
+  }
