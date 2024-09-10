@@ -1,12 +1,12 @@
 "use client";
 import styles from "./button.module.css";
 import Link from "next/link";
-import { UiIcon } from "@uireact/icons";
+import { UiIcon, UiIconProps } from "@uireact/icons";
 
 type ButtonProps = {
-  text: string | undefined
+  text: string;
   href: string;
-  icon: string
+  icon: UiIconProps['icon'];
 };
 
 export const Button = ({ text, href, icon }: ButtonProps) => {
