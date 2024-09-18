@@ -32,7 +32,7 @@
   display: block;
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 10px 15px; 
+  padding: 10px 15px;
   background-color: white;
   outline: none;
 }
@@ -42,9 +42,8 @@
   resize: none;
 }
 
-
 .input:focus {
-  border-color: #4A90E2; 
+  border-color: #4a90e2;
   box-shadow: 0 0 0 2px rgba(89, 142, 202, 0.5);
 }
 
@@ -61,9 +60,14 @@
   gap: 10px;
 }
 
-
 .btnSubmit:hover {
   background-color: var(--third-color);
   cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 0.85rem;
+  display: flex;
+  font-weight: bold;
+}
