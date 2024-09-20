@@ -3,11 +3,7 @@ import styles from "./form.module.css";
 import { UiLabel } from "@uireact/text";
 import { UiIcon } from "@uireact/icons";
 import { useState } from "react";
-import {
-  UiValidator,
-  UiValidatorErrors,
-  UiValidatorResult,
-} from "@uireact/validator";
+import { UiValidator, UiValidatorErrors } from "@uireact/validator";
 
 const validator = new UiValidator();
 
@@ -18,6 +14,12 @@ const schema = {
     .isRequired("Email is required")
     .type("email", "The mail is not valid"),
   message: validator.ruler().isRequired("Message is required"),
+};
+
+type Contact = {
+  name: string;
+  email: string;
+  message: string;
 };
 
 export const Form = () => {
@@ -55,10 +57,26 @@ export const Form = () => {
       console.log(result.errors);
       setErrors(result.errors);
       return;
-    } else {
-      console.log('succeded')
     }
+    await sendMail(newContact);
   }
+
+  const sendMail = async (contact: Contact) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(contact),
+      });
+
+      if (!response.ok) {
+        console.log("negative response API sendMail");
+      } else {
+        console.log("success response API sendMail");
+      }
+    } catch (error) {
+      console.error("Error sending mail:", error);
+    }
+  };
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
@@ -86,7 +104,9 @@ export const Form = () => {
         value={contactInfo.email}
         onChange={handleChangeInputs}
       ></input>
-      {errors?.email?.map((error) => (<span className={styles.error}>{error.message} </span>))}
+      {errors?.email?.map((error) => (
+        <span className={styles.error}>{error.message} </span>
+      ))}
       <UiLabel className={styles.label}>Message</UiLabel>
       <textarea
         id="messageInput"
