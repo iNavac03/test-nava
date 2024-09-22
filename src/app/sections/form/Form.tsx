@@ -4,6 +4,7 @@ import { UiLabel } from "@uireact/text";
 import { UiIcon } from "@uireact/icons";
 import { useState } from "react";
 import { UiValidator, UiValidatorErrors } from "@uireact/validator";
+import { UiNotifications } from "@uireact/notifications";
 
 const validator = new UiValidator();
 
@@ -54,7 +55,6 @@ export const Form = () => {
     const result = validator.validate(schema, newContact, true);
 
     if (!result.passed) {
-      console.log(result.errors);
       setErrors(result.errors);
       return;
     }
@@ -62,68 +62,71 @@ export const Form = () => {
   }
 
   const sendMail = async (contact: Contact) => {
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(contact),
-      });
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(contact),
+    });
 
-      if (!response.ok) {
-        console.log("negative response API sendMail");
-      } else {
-        console.log("success response API sendMail");
-      }
-    } catch (error) {
-      console.error("Error sending mail:", error);
+    if (!response.ok) {
+      console.log("error sending mail");
+    } else {
+      setContactInfo({
+        name: "",
+        email: "",
+        message: "",
+      });
+      console.log("mail sent");
     }
   };
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
-      <h1 className={styles.title}>Contact form</h1>
-      <UiLabel className={styles.label}>Name</UiLabel>
-      <input
-        id="nameInput"
-        name="name"
-        className={styles.input}
-        type="text"
-        placeholder="Type your fullname"
-        value={contactInfo.name}
-        onChange={handleChangeInputs}
-      ></input>
-      {errors?.name && (
-        <span className={styles.error}>{errors?.name?.[0].message} </span>
-      )}
-      <UiLabel className={styles.label}>Email</UiLabel>
-      <input
-        id="emailInput"
-        name="email"
-        className={styles.input}
-        type="text"
-        placeholder="Type your email"
-        value={contactInfo.email}
-        onChange={handleChangeInputs}
-      ></input>
-      {errors?.email?.map((error) => (
-        <span className={styles.error}>{error.message} </span>
-      ))}
-      <UiLabel className={styles.label}>Message</UiLabel>
-      <textarea
-        id="messageInput"
-        name="message"
-        className={`${styles.input} ${styles.textarea}`}
-        maxLength={200}
-        placeholder="Type your message"
-        value={contactInfo.message}
-        onChange={handleChangeInputs}
-      ></textarea>
-      {errors?.message && (
-        <span className={styles.error}>{errors?.message?.[0].message} </span>
-      )}
-      <button className={styles.btnSubmit} type="submit">
-        <UiIcon className={styles.icon} icon="Mail" category="primary" />
-        Submit
-      </button>
-    </form>
+    <>
+      <form className={styles.container} onSubmit={handleSubmit}>
+        <h1 className={styles.title}>Contact form</h1>
+        <UiLabel className={styles.label}>Name</UiLabel>
+        <input
+          id="nameInput"
+          name="name"
+          className={styles.input}
+          type="text"
+          placeholder="Type your fullname"
+          value={contactInfo.name}
+          onChange={handleChangeInputs}
+        ></input>
+        {errors?.name && (
+          <span className={styles.error}>{errors?.name?.[0].message} </span>
+        )}
+        <UiLabel className={styles.label}>Email</UiLabel>
+        <input
+          id="emailInput"
+          name="email"
+          className={styles.input}
+          type="text"
+          placeholder="Type your email"
+          value={contactInfo.email}
+          onChange={handleChangeInputs}
+        ></input>
+        {errors?.email?.map((error) => (
+          <span className={styles.error}>{error.message} </span>
+        ))}
+        <UiLabel className={styles.label}>Message</UiLabel>
+        <textarea
+          id="messageInput"
+          name="message"
+          className={`${styles.input} ${styles.textarea}`}
+          maxLength={200}
+          placeholder="Type your message"
+          value={contactInfo.message}
+          onChange={handleChangeInputs}
+        ></textarea>
+        {errors?.message && (
+          <span className={styles.error}>{errors?.message?.[0].message} </span>
+        )}
+        <button className={styles.btnSubmit} type="submit">
+          <UiIcon className={styles.icon} icon="Mail" category="primary" />
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
