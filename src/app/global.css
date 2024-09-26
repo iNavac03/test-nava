@@ -16,6 +16,7 @@
 @import url(../../node_modules/@uireact/foundation/dist/index.css);
 @import url(../../node_modules/@uireact/icons/dist/index.css);
 @import url(../../node_modules/@uireact/text/dist/index.css);
+@import url(../../node_modules/@uireact/notifications/dist/index.css);
 
 :root {
     /* colors */

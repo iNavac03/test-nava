@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
   }
 
   const result = await resend.emails.send({
+    // change 'from' mail to RESEND_API_MAIL when deploy
     from: "onboarding@resend.dev",
     to: email,
     subject: "We got your information",

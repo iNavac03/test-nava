@@ -4,7 +4,7 @@ import { UiLabel } from "@uireact/text";
 import { UiIcon } from "@uireact/icons";
 import { useState } from "react";
 import { UiValidator, UiValidatorErrors } from "@uireact/validator";
-import { UiNotifications } from "@uireact/notifications";
+import { useNotifications } from "@uireact/notifications";
 
 const validator = new UiValidator();
 
@@ -29,6 +29,8 @@ export const Form = () => {
     email: "",
     message: "",
   });
+
+  const { showNotification } = useNotifications();
 
   const [errors, setErrors] = useState<UiValidatorErrors>();
 
@@ -68,14 +70,23 @@ export const Form = () => {
     });
 
     if (!response.ok) {
-      console.log("error sending mail");
+      showNotification({
+        icon: "X",
+        title: "Error",
+        message: "An error ocurred, try again."
+      });
     } else {
       setContactInfo({
         name: "",
         email: "",
         message: "",
       });
-      console.log("mail sent");
+      setErrors({})
+      showNotification({
+        icon: "Check",
+        title: "Success!",
+        message: "We got your information and an email was sent to your account."
+      });
     }
   };
 
@@ -106,8 +117,8 @@ export const Form = () => {
           value={contactInfo.email}
           onChange={handleChangeInputs}
         ></input>
-        {errors?.email?.map((error) => (
-          <span className={styles.error}>{error.message} </span>
+        {errors?.email?.map((error, index) => (
+          <span key={`Error-message-${index}`} className={styles.error}>{error.message} </span>
         ))}
         <UiLabel className={styles.label}>Message</UiLabel>
         <textarea
