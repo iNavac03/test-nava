@@ -94,7 +94,7 @@ export const Form = () => {
     <>
       <form className={styles.container} onSubmit={handleSubmit}>
         <h1 className={styles.title}>Contact form</h1>
-        <UiLabel className={styles.label}>Name</UiLabel>
+        <UiLabel htmlFor="nameInput" className={styles.label}>Name</UiLabel>
         <input
           id="nameInput"
           name="name"
@@ -107,7 +107,7 @@ export const Form = () => {
         {errors?.name && (
           <span className={styles.error}>{errors?.name?.[0].message} </span>
         )}
-        <UiLabel className={styles.label}>Email</UiLabel>
+        <UiLabel htmlFor="emailInput" className={styles.label}>Email</UiLabel>
         <input
           id="emailInput"
           name="email"
@@ -120,7 +120,7 @@ export const Form = () => {
         {errors?.email?.map((error, index) => (
           <span key={`Error-message-${index}`} className={styles.error}>{error.message} </span>
         ))}
-        <UiLabel className={styles.label}>Message</UiLabel>
+        <UiLabel htmlFor="messageInput" className={styles.label}>Message</UiLabel>
         <textarea
           id="messageInput"
           name="message"
