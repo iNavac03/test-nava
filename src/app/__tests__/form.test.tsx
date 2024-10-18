@@ -1,7 +1,17 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { Form } from "../sections";
 
+const mockShowNotification = jest.fn();
+
+jest.mock('@uireact/notifications', () => ({
+  useNotifications: () => ({
+    showNotification: mockShowNotification,
+  }),
+}));
+
+// Simular el fetch globalmente
+global.fetch = jest.fn();
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -80,5 +90,36 @@ describe("Form", () => {
     const emailError = screen.getByText(/the mail is not valid/i);
 
     expect(emailError).toBeInTheDocument();
+  });
+
+  it("submits the form when all fields are valid and get success notification", async () => {
+    // Simular una respuesta exitosa del fetch (estado 200)
+    (global.fetch as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: true,
+        status: 200,
+      })
+    );
+
+    render(<Form />);
+
+    const nameInput = screen.getByRole("textbox", { name: /name/i });
+    const emailInput = screen.getByRole("textbox", { name: /email/i });
+    const messageInput = screen.getByRole("textbox", { name: /message/i });
+
+    fireEvent.change(nameInput, { target: { value: "Luis Nava" } });
+    fireEvent.change(emailInput, { target: { value: "lnava6@ucol.mx" } });
+    fireEvent.change(messageInput, { target: { value: "Hello" } });
+
+    const submitButton = screen.getByRole("button", { name: /submit/i });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+
+    expect(mockShowNotification).toHaveBeenCalledWith({
+      icon: 'Check',
+      title: 'Success!',
+      message: 'We got your information and an email was sent to your account.',
+    });
   });
 });
